@@ -1,22 +1,46 @@
-import React, {Fragment} from "react";
+import React from "react";
+import { lorem } from "../../helper";
 
-import TitleSection from "../../components/TitleSection.component";
-import Section from "../../components/Section.component";
-import Button from "../../components/Button.component";
+import ScrollingPageTemplate from "../ScrollingPageTemplate";
 
-const Fist = () => {
-  return (
-    <Fragment>
-      <TitleSection>
-        <h1>The Fist Test</h1>
-        <p>No, you don't punch your steak.</p>
-      </TitleSection>
-      {/* <Section>
-        <h2>What?</h2>
-        <Button to="/levels">The 4 Levels of Doneness</Button>
-      </Section> */}
-    </Fragment>
-  );
-};
+const tests = [
+  {
+    id: "what",
+    name: "What?",
+    text: lorem.generateSentences(5),
+  },
+  {
+    id: "rare",
+    name: "Rare",
+    img: "https://dummyimage.com/400x300/757575/ffffff",
+    img2: "https://dummyimage.com/400x300/757575/ffffff",
+  },
+  {
+    id: "medium-rare",
+    name: "Medium-Rare",
+    img: "https://dummyimage.com/400x300/757575/ffffff",
+    img2: "https://dummyimage.com/400x300/757575/ffffff",
+  },
+  {
+    id: "medium",
+    name: "Medium",
+    img: "https://dummyimage.com/400x300/757575/ffffff",
+    img2: "https://dummyimage.com/400x300/757575/ffffff",
+  },
+  {
+    id: "well-done",
+    name: "Well-Done",
+    img: "https://dummyimage.com/400x300/757575/ffffff",
+    img2: "https://dummyimage.com/400x300/757575/ffffff",
+  },
+];
+
+const Fist = () => (
+  <ScrollingPageTemplate
+    title={"The Fist Test"}
+    subtitle={"No, you don't punch your steak."}
+    sections={tests}
+  />
+);
 
 export default Fist;

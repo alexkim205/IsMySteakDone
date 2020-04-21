@@ -1,8 +1,6 @@
 import React, {Fragment} from "react";
 
 import TitleSection from "../../components/TitleSection.component";
-import Section from "../../components/Section.component";
-import Button from "../../components/Button.component";
 
 const CheatSheet = () => {
   return (

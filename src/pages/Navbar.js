@@ -12,56 +12,63 @@ const Container = styled.nav`
   flex-direction: row;
   background-color: pink;
   padding: 0 0.5em;
+  z-index: 5;
 
   .spacer {
     flex: 1;
   }
 `;
 
-const NavItem = styled.div`
+const NavItem = styled(Link)`
   display: flex;
   /* width: 150px; */
   align-items: center;
   justify-content: center;
   padding: 0 1em;
+  transition: 0.3s background-color;
+  cursor: pointer;
 
-  a {
-    text-decoration: none;
-    &:visited,
-    &:active,
-    &:hover {
-      color: black;
-    }
+  &:hover {
+    background-color: #e75480;
+  }
+
+  color: black;
+  text-decoration: none;
+  font-weight: ${({ selected }) => (selected ? "bold" : "normal")};
+
+  &:visited,
+  &:active,
+  &:hover {
+    color: black;
   }
 `;
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  console.log("Navbar -> pathname", pathname);
 
   return (
     <Container>
-      <NavItem active={pathname === "/"}>
-        <Link to="/">Home</Link>
+      <NavItem selected={pathname === "/"} to="/">
+        Home
       </NavItem>
-      <NavItem active={pathname === "/"}>
-        <Link to="/levels">Levels of Doneness</Link>
+      <NavItem selected={pathname === "/levels"} to="/levels">
+        Levels of Doneness
       </NavItem>
-      <NavItem active={pathname === "/"}>
-        <Link to="/palm">The Palm Test</Link>
+      <NavItem selected={pathname === "/palm"} to="/palm">
+        The Palm Test
       </NavItem>
-      <NavItem active={pathname === "/"}>
-        <Link to="/face">The Face Test</Link>
+      <NavItem selected={pathname === "/face"} to="/face">
+        The Face Test
       </NavItem>
-      <NavItem active={pathname === "/"}>
-        <Link to="/fist">The Fist Test</Link>
+      <NavItem selected={pathname === "/fist"} to="/fist">
+        The Fist Test
       </NavItem>
       <div className="spacer"></div>
-      <NavItem active={pathname === "/"}>
-        <Link to="/cheat-sheet">Cheat Sheet</Link>
+      <NavItem selected={pathname === "/cheat-sheet"} to="/cheat-sheet">
+        Cheat Sheet
       </NavItem>
-      <NavItem active={pathname === "/"}>
-        <Link to="/quiz">Quiz</Link>
+      <NavItem selected={pathname === "/quiz"} to="/quiz">
+        Quiz
       </NavItem>
     </Container>
   );

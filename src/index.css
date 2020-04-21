@@ -6,7 +6,8 @@ html {font-size: 100%;} /*16px*/
 body {
   font-family: "Ubuntu", sans-serif;
   margin: 0;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 h1,

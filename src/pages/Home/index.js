@@ -14,11 +14,11 @@ const Home = () => {
           only your body.
         </p>
       </TitleSection>
-      <Section>
+      <Section center>
         <h2>What?</h2>
         <Button to="/levels">The 4 Levels of Doneness</Button>
       </Section>
-      <Section>
+      <Section center>
         <h2>How?</h2>
         <div className="flex-h">
           <Button to="/palm">The Palm Test</Button>

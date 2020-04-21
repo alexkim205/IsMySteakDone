@@ -4,7 +4,6 @@ export const RootBackground = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 50px; /* height of navbar */
-  height: 100vh;
   width: 100vw;
 `;
 
@@ -14,5 +13,4 @@ export const Body = styled.div`
   flex-direction: column;
   background-color: lightgreen;
   min-height: 500px;
-  padding-bottom: 8em;
 `;
