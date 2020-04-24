@@ -59,6 +59,14 @@ const QuestionSection = () => {
       `s${scenario}p${part}`,
       JSON.stringify({ hasSubmitted: true, isCorrect, selectedVal })
     );
+
+    localStorage.setItem(
+      `quiz_progress`,
+      JSON.stringify({
+        lastUnansweredQuestion: { scenario, part },
+        isQuizFinished: nextRoute === "/quiz/end",
+      })
+    );
   };
 
   const renderQuestionType = () => {
@@ -108,29 +116,27 @@ const QuestionSection = () => {
         )}
       </div>
       <div className="buttons">
+        {prevRoute !== "/quiz/start" && ( // if first question, don't show previous button
+          <Button
+            icon
+            onClick={() => {
+              history.push(prevRoute);
+            }}
+          >
+            <IoIosArrowBack />
+          </Button>
+        )}
         {hasSubmitted && (
-          <Fragment>
-            {prevRoute !== "/quiz/start" && ( // if first question, don't show previous button
-              <Button
-                icon
-                onClick={() => {
-                  history.push(prevRoute);
-                }}
-              >
-                <IoIosArrowBack />
-              </Button>
-            )}
-            <Button
-              icon={nextRoute !== "/quiz/end"}
-              onClick={() => {
-                setHasSubmitted(false);
-                setIsCorrect(false);
-                history.push(nextRoute);
-              }}
-            >
-              {nextRoute === "/quiz/end" ? "Finish" : <IoIosArrowForward />}
-            </Button>
-          </Fragment>
+          <Button
+            icon={nextRoute !== "/quiz/end"}
+            onClick={() => {
+              setHasSubmitted(false);
+              setIsCorrect(false);
+              history.push(nextRoute);
+            }}
+          >
+            {nextRoute === "/quiz/end" ? "Finish" : <IoIosArrowForward />}
+          </Button>
         )}
       </div>
     </Container>

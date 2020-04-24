@@ -7,7 +7,6 @@ import { Palm, Face } from "../../components/HoverMedia.component";
 import fistpng from "../../media/fist.png";
 import { TactileTypes, FistTypes } from "./questions";
 import { handleButtonColor } from "../../helper";
-import { mediaTemplate } from "@humblebee/styled-components-breakpoint";
 
 const Container = styled.div`
   width: 100%;

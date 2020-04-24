@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useHistory } from "react-router-dom";
 import { LoremIpsum } from "lorem-ipsum";
 import styledBreakpoint from "@humblebee/styled-components-breakpoint";
 
@@ -105,5 +105,31 @@ export const handleButtonColor = (val, refVal, hasSubmitted, isCorrect) => {
     }
   } else {
     return "choice";
+  }
+};
+
+export const redirectQuiz = () => {
+  const history = useHistory();
+  const location = useLocation();
+
+  // Redirects to resume quiz progress last unanswered question.
+  const cachedProgress = JSON.parse(localStorage.getItem("quiz_progress"));
+  if (!cachedProgress) {
+    // Quiz hasn't started
+    if (location.pathname !== "/quiz/start") {
+      history.push(`/quiz/start`);
+    }
+    return;
+  }
+  const {
+    isQuizFinished,
+    lastUnansweredQuestion: { scenario: lastScenario, part: lastPart },
+  } = cachedProgress;
+  if (isQuizFinished) {
+    if (location.pathname !== "/quiz/end") {
+      history.push(`/quiz/end`);
+    }
+  } else {
+    history.push(`/quiz/${lastScenario}/${lastPart}`);
   }
 };
