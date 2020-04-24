@@ -10,8 +10,6 @@ import palmmediumrare from "../media/palm-medium-rare.png";
 import palmmedium from "../media/palm-medium.png";
 import palmwelldone from "../media/palm-well-done.png";
 
-import fistpng from "../media/fist.png";
-
 const ImageWrapper = styled.div`
   /* position: absolute; */
   margin: 0 auto;

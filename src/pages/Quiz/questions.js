@@ -87,12 +87,12 @@ export const questions = [
     type: QuestionTypes.MULTIPLE_CHOICE,
     validate: (answer) => answer === DonenessTypes.RARE,
     correctFeedback:
-      "Correct! A medium-rare steak should be tested by connecting the thumb with the middle finger, and then feeling the palm area under your thumb.",
+      "Correct! The customer is always right, it looks like your steak was a little underdone.",
     incorrectFeedback:
-      "Incorrect! A medium-rare steak should be tested by connecting the thumb with the middle finger, and then feeling the palm area under your thumb.",
+      "Incorrect. The customer is always right, it looks like your steak was actually rare.",
     qInfo: {
       setup:
-        "After doing the palm test, it seems like your steak feels medium-rare. You send it off to the person who ordered it, but it’s returned to the kitchen with complaints that the steak isn’t done like they wanted. The cross-cut of the steak looks like this:",
+        "After conducting the palm test, it seems like your steak feels medium-rare. You send it off to the person who ordered it, but it’s returned to the kitchen with complaints that the steak isn’t done like they wanted. The cross-cut of the steak looks like this:",
       prompt: "From this image, can you tell how done the steak is?",
       img: steakrare,
     },
@@ -103,7 +103,7 @@ export const questions = [
     scenario: 2,
     part: 1,
     type: QuestionTypes.NUMBER,
-    validate: (answer) => answer >= 0 && answer <= 2.5,
+    validate: (answer) => answer >= 1.5 && answer <= 3,
     correctFeedback:
       "Correct! A rare steak should be seared for 1-2 minutes on each side on medium-high.",
     incorrectFeedback:
@@ -143,12 +143,67 @@ export const questions = [
     correctFeedback:
       "Correct! The customer is always right, it looks like your steak was a little overdone",
     incorrectFeedback:
-      "Incorrect. The customer is always right, it looks like your steak was a little overdone.",
+      "Incorrect. The customer is always right, it looks like your steak was actually medium.",
     qInfo: {
       setup:
-        "After doing the palm test, it seems like your steak feels rare. You send it off to the person who ordered it, but it’s returned to the kitchen with complaints that the steak isn’t done like they wanted. The cross-cut of the steak looks like this:",
+        "After conducting the face test, it seems like your steak feels rare. You send it off to the person who ordered it, but it’s returned to the kitchen with complaints that the steak isn’t done like they wanted. The cross-cut of the steak looks like this:",
       prompt: "From this image, can you tell how done the steak is?",
       img: steakmedium,
+    },
+  },
+  {
+    id: "s3p1",
+    name: "Scenario 3 Part 1",
+    scenario: 3,
+    part: 1,
+    type: QuestionTypes.NUMBER,
+    validate: (answer) => answer >= 6 && answer <= 8.5,
+    correctFeedback:
+      "Correct! A well-done steak should be seared for 6.5-8 minutes on each side on medium-high.",
+    incorrectFeedback:
+      "Incorrect. A well-done steak should be seared for 6.5-8 minutes on each side on medium-high.",
+    qInfo: {
+      setup:
+        "You receive an order for a well-done ribeye. You’re given a 1 inch thick 8oz ribeye.",
+      prompt: "How long should you sear each side of the steak?",
+      suffix: "minutes",
+    },
+  },
+  {
+    id: "s3p2",
+    name: "Scenario 3 Part 2",
+    scenario: 3,
+    part: 2,
+    type: QuestionTypes.TACTILE,
+    validate: (fistType) => FistTypes[fistType] === DonenessTypes.WELL_DONE,
+    correctFeedback:
+      "Correct! A well-done steak should be tested by comparing the feel of the steak with the area between the thumb and index fingers when tightly clenching your fist.",
+    incorrectFeedback:
+      "Incorrect. A well-done steak should be tested by comparing the feel of the steak with the area between the thumb and index fingers when tightly clenching your fist.",
+    qInfo: {
+      setup:
+        "After searing, you have a nice golden brown steak. Congrats!\nIt looks nice on the outside, but you want to test if the steak really is well-done. You don’t want to puncture the steak with a thermometer, so you use the fist test.",
+      prompt:
+        "Choose how much to clench your fist before feeling the highlighted area.",
+      media: TactileTypes.FIST,
+    },
+  },
+  {
+    id: "s3p3",
+    name: "Scenario 3 Part 3",
+    scenario: 3,
+    part: 3,
+    type: QuestionTypes.MULTIPLE_CHOICE,
+    validate: (answer) => answer === DonenessTypes.MEDIUM_RARE,
+    correctFeedback:
+      "Correct! The customer is always right, it looks like your steak was a little underdone",
+    incorrectFeedback:
+      "Incorrect. The customer is always right, it looks like your steak was actually medium-rare.",
+    qInfo: {
+      setup:
+        "After conducting the fist test, it seems like your steak feels well-done. You send it off to the person who ordered it, but it’s returned to the kitchen with complaints that the steak isn’t done like they wanted. The cross-cut of the steak looks like this:",
+      prompt: "From this image, can you tell how done the steak is?",
+      img: steakmediumrare,
     },
   },
 ];

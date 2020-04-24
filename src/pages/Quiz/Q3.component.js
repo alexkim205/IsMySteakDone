@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Button } from "../../components/Button.component";
-import { Palm, Face } from "../../components/HoverMedia.component";
-
 import { DonenessTypes } from "./questions";
+import { handleButtonColor } from "../../helper";
 
 const Container = styled.div`
   width: 100%;
@@ -73,19 +72,6 @@ export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
     handleSubmit(val);
   };
 
-  const handleButtonColor = (val) => {
-    console.log(hasSubmitted, isCorrect, value);
-    if (hasSubmitted) {
-      if (val === value) {
-        return isCorrect ? "success" : "failure";
-      } else {
-        return "disabled";
-      }
-    } else {
-      return "choice";
-    }
-  };
-
   return (
     <Container>
       <div className="setup">{setup}</div>
@@ -99,7 +85,7 @@ export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
             <Button
               onClick={(e) => handleClick(e, done)}
               disabled={hasSubmitted}
-              type={handleButtonColor(done)}
+              type={handleButtonColor(done, value, hasSubmitted, isCorrect)}
               key={i}
             >
               {done.replace("_", "-")}

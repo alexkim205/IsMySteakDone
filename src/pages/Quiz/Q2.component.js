@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 
 import { Button } from "../../components/Button.component";
 import { Palm, Face } from "../../components/HoverMedia.component";
-
-import { TactileTypes } from "./questions";
+import fistpng from "../../media/fist.png";
+import { TactileTypes, FistTypes } from "./questions";
+import { handleButtonColor } from "../../helper";
 
 const Container = styled.div`
   width: 100%;
@@ -34,8 +35,16 @@ const Container = styled.div`
     .wrapper {
       box-sizing: border-box;
       margin: 0 auto 2em auto;
-      
+
+      img {
+        height: 250px;
+      }
       /* height: 400px; */
+    }
+    .choices {
+      display: flex;
+      justify-content: center;
+      margin: 1em 0 2em 0;
     }
   }
 
@@ -51,14 +60,55 @@ const Container = styled.div`
 
 export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
   const { setup, prompt, media } = qInfo;
+  const [fistValue, setFistValue] = useState(null);
 
   const renderType = () => {
     if (media === TactileTypes.PALM) {
-      return <Palm hasSubmitted={hasSubmitted} handleSubmit={handleSubmit} isCorrect={isCorrect}/>;
+      return (
+        <Palm
+          hasSubmitted={hasSubmitted}
+          handleSubmit={handleSubmit}
+          isCorrect={isCorrect}
+        />
+      );
     } else if (media === TactileTypes.FACE) {
-      return <Face hasSubmitted={hasSubmitted} handleSubmit={handleSubmit} isCorrect={isCorrect} />;
-    } else if (media ===TactileTypes.FIST) {
-      return; // implement
+      return (
+        <Face
+          hasSubmitted={hasSubmitted}
+          handleSubmit={handleSubmit}
+          isCorrect={isCorrect}
+        />
+      );
+    } else if (media === TactileTypes.FIST) {
+      return (
+        <Fragment>
+          <img src={fistpng} alt="what-steak"></img>
+          <div className="choices">
+            {Object.keys(FistTypes).map((fist, i) => (
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (hasSubmitted) {
+                    return;
+                  }
+                  setFistValue(fist);
+                  handleSubmit(fist);
+                }}
+                disabled={hasSubmitted}
+                type={handleButtonColor(
+                  fist,
+                  fistValue,
+                  hasSubmitted,
+                  isCorrect
+                )}
+                key={i}
+              >
+                {fist.replace("_", "-")}
+              </Button>
+            ))}
+          </div>
+        </Fragment>
+      );
     }
   };
 
@@ -69,18 +119,6 @@ export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
       <div className="input">
         <div className="wrapper">{renderType()}</div>
       </div>
-      {/* {!hasSubmitted && (
-        <div className="buttons">
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              handleSubmit(value);
-            }}
-          >
-            Submit
-          </Button>
-        </div>
-      )} */}
     </Container>
   );
 };

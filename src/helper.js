@@ -67,3 +67,15 @@ export const getNextQuestionPageRoute = () => {
     }
   }
 };
+
+export const handleButtonColor = (val, refVal, hasSubmitted, isCorrect) => {
+  if (hasSubmitted) {
+    if (val === refVal) {
+      return isCorrect ? "success" : "failure";
+    } else {
+      return "disabled";
+    }
+  } else {
+    return "choice";
+  }
+}
