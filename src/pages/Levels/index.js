@@ -3,7 +3,7 @@ import { lorem } from "../../helper";
 
 import ScrollingPageTemplate from "../ScrollingPageTemplate";
 import Section from "../../components/Section.component";
-import Button from "../../components/Button.component";
+import {ButtonLink} from "../../components/Button.component";
 
 const levels = [
   {
@@ -42,9 +42,9 @@ const Levels = () => (
         <Section center>
           <h2>Next, learn how to test doneness.</h2>
           <div className="flex-h">
-            <Button to="/palm">The Palm Test</Button>
-            <Button to="/face">The Face Test</Button>
-            <Button to="/fist">The Fist Test</Button>
+            <ButtonLink to="/palm">The Palm Test</ButtonLink>
+            <ButtonLink to="/face">The Face Test</ButtonLink>
+            <ButtonLink to="/fist">The Fist Test</ButtonLink>
           </div>
         </Section>
       }

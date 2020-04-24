@@ -67,7 +67,7 @@ const Navbar = () => {
       <NavItem selected={pathname === "/cheat-sheet"} to="/cheat-sheet">
         Cheat Sheet
       </NavItem>
-      <NavItem selected={pathname === "/quiz"} to="/quiz">
+      <NavItem selected={pathname.startsWith("/quiz")} to="/quiz/start">
         Quiz
       </NavItem>
     </Container>

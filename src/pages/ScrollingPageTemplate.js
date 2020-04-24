@@ -72,8 +72,8 @@ const ScrollingPageTemplate = ({
           {sections && <Scrollbar sections={sections} />}
         </TwoCol.Right>
       </TwoCol>
-      {bottomButtons}
       <div className="spacer" style={{ height: additionalHeight }}></div>
+      {bottomButtons}
     </Fragment>
   );
 };

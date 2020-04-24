@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import TitleSection from "../../components/TitleSection.component";
 import Section from "../../components/Section.component";
-import Button from "../../components/Button.component";
+import { ButtonLink } from "../../components/Button.component";
 
 const Home = () => {
   return (
@@ -16,14 +16,14 @@ const Home = () => {
       </TitleSection>
       <Section center>
         <h2>What?</h2>
-        <Button to="/levels">The 4 Levels of Doneness</Button>
+        <ButtonLink to="/levels">The 4 Levels of Doneness</ButtonLink>
       </Section>
       <Section center>
         <h2>How?</h2>
         <div className="flex-h">
-          <Button to="/palm">The Palm Test</Button>
-          <Button to="/face">The Face Test</Button>
-          <Button to="/fist">The Fist Test</Button>
+          <ButtonLink to="/palm">The Palm Test</ButtonLink>
+          <ButtonLink to="/face">The Face Test</ButtonLink>
+          <ButtonLink to="/fist">The Fist Test</ButtonLink>
         </div>
       </Section>
     </Fragment>

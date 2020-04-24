@@ -8,6 +8,8 @@ const TitleSection = styled.div`
   padding: 3em 2em 3em 2em;
   box-sizing: border-box;
   background-color: salmon;
+  display: flex;
+  justify-content: center;
 
   h1 {
     font-size: 4em;

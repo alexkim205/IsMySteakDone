@@ -9,6 +9,8 @@ const Section = styled.div`
   padding: 2em 2em 1em 2em;
   box-sizing: border-box;
   background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
 
   h2 {
     font-size: 2em;
@@ -18,9 +20,20 @@ const Section = styled.div`
     font-size: 1em;
   }
 
+  .flex-v {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
   .flex-h {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 100%;
 
     ${breakpoint.down("m")`
       flex-direction: column;

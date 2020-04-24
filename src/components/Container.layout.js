@@ -1,4 +1,5 @@
 import styled from "styled-components"
+// import { breakpoint } from "../helper";
 
 export default styled.div`
 
@@ -6,6 +7,6 @@ export default styled.div`
   flex-direction: column;
   align-items: ${({ center }) => (center ? "center" : "start")};
 
-  margin: 0 auto;
-  max-width: 800px;
+  /* margin: 0 auto; */
+  width: 800px;
 `

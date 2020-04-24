@@ -3,7 +3,7 @@ import { lorem } from "../../helper";
 
 import ScrollingPageTemplate from "../ScrollingPageTemplate";
 import Section from "../../components/Section.component";
-import Button from "../../components/Button.component";
+import {ButtonLink} from "../../components/Button.component";
 
 const tests = [
   {
@@ -46,8 +46,8 @@ const Palm = () => (
       <Section center>
         <h2>One down, two to go.</h2>
         <div className="flex-h">
-          <Button to="/face">The Face Test</Button>
-          <Button to="/fist">The Fist Test</Button>
+          <ButtonLink to="/face">The Face Test</ButtonLink>
+          <ButtonLink to="/fist">The Fist Test</ButtonLink>
         </div>
       </Section>
     }

@@ -30,7 +30,7 @@ const Navigator = () => {
       <Route path="/cheat-sheet">
         <CheatSheet />
       </Route>
-      <Route path="/quiz/:scenario?/:q?">
+      <Route path="/quiz">
         <Quiz />
       </Route>
     </Switch>

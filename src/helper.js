@@ -1,18 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { LoremIpsum } from "lorem-ipsum";
 import styledBreakpoint from "@humblebee/styled-components-breakpoint";
 
+import { questions } from "./pages/Quiz/questions";
+
 // Creates an object with breakpoint utility methods.
-export const breakpoint = styledBreakpoint({
+export const breakpoints = {
   xxs: 0,
   xs: 320,
   s: 576,
   m: 768,
   l: 992,
   xl: 1200,
-});
+};
+export const breakpoint = styledBreakpoint(breakpoints);
 
 export const calculateAdditionalHeight = (ref) => {
   if (!ref || !ref.current) return 0;
@@ -20,7 +23,7 @@ export const calculateAdditionalHeight = (ref) => {
   const topOfLastSection =
     ref.current.getBoundingClientRect().top + window.scrollY;
   const pageScrollNeeded = document.body.scrollHeight - topOfLastSection;
-  const offsetNeeded = window.innerHeight - 150 - pageScrollNeeded;
+  const offsetNeeded = window.innerHeight - pageScrollNeeded + 100;
   if (offsetNeeded > 0) {
     return offsetNeeded;
   }
@@ -37,4 +40,30 @@ export const scrollToTop = () => {
   }, [pathname]);
 
   return null;
+};
+
+export const getNextQuestionPageRoute = () => {
+  const PARTS_PER_SCENARIO = 3;
+  const num_questions = questions.length;
+  const { pathname } = useLocation();
+  const { scenario, part } = useParams();
+
+  if (pathname === "/quiz/start") {
+    return "/quiz/1/1";
+  } else if (pathname === "/quiz/end") {
+    return null;
+  } else {
+    if (!scenario || !part) {
+      return null;
+    }
+    const next_idx =
+      (parseInt(scenario) - 1) * PARTS_PER_SCENARIO + parseInt(part);
+
+    if (next_idx === num_questions) {
+      // Current question is last one
+      return "/quiz/end";
+    } else {
+      return `/quiz/${questions[next_idx].scenario}/${questions[next_idx].part}`;
+    }
+  }
 };
