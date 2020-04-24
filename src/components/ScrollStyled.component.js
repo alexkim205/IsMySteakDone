@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { StickyContainer } from "react-sticky";
 import { Link as ScrollLink } from "react-scroll";
 
+import { SCROLL_WIDTH } from "../helper";
+
 export const StyledStickyContainer = styled(StickyContainer)`
   height: 100%;
 
   a.active {
     color: black;
-    font-weight: bold;
   }
 
   .vertical-container {
@@ -22,7 +23,7 @@ export const StyledStickyContainer = styled(StickyContainer)`
       flex-direction: row;
 
       .scroll {
-        width: 10px;
+        width: ${SCROLL_WIDTH}px;
         background-color: lightcyan;
       }
       .headers {
@@ -31,8 +32,8 @@ export const StyledStickyContainer = styled(StickyContainer)`
         flex-direction: column;
 
         .item {
-          height: 50px;
-          padding: 20px 0 20px 1em;
+          /* height: 50px; */
+          padding: 1rem;
           display: flex;
           align-items: center;
         }
@@ -42,7 +43,7 @@ export const StyledStickyContainer = styled(StickyContainer)`
 `;
 
 export const ScrollNavLink = styled(ScrollLink)`
-  font-size: 1.2em;
+  font-size: 1em;
   cursor: pointer;
   color: gray;
 `;

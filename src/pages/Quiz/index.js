@@ -6,6 +6,7 @@ import TitleSection from "../../components/TitleSection.component";
 import Section from "../../components/Section.component";
 import TwoCol from "../../components/TwoColumn.layout";
 import Scrollbar from "../../components/Scrollbar.component";
+import QuizScrollbar from "./QuizScrollbar.component";
 import { ButtonLink, Button } from "../../components/Button.component";
 import QuestionSection from "./QuestionsSection.component";
 
@@ -40,7 +41,8 @@ const QuizQuestions = () => {
         <QuestionSection />
       </TwoCol.Left>
       <TwoCol.Right minWidth={100} width={20}>
-        <Scrollbar sections={questions} />
+        <QuizScrollbar />
+        {/* <Scrollbar sections={questions} /> */}
       </TwoCol.Right>
     </TwoCol>
   );

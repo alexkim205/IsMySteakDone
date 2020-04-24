@@ -133,3 +133,5 @@ export const redirectQuiz = () => {
     history.push(`/quiz/${lastScenario}/${lastPart}`);
   }
 };
+
+export const SCROLL_WIDTH = 7;
