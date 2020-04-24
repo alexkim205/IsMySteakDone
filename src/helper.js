@@ -42,30 +42,58 @@ export const scrollToTop = () => {
   return null;
 };
 
-export const getNextQuestionPageRoute = () => {
+export const getPrevAndNextQuestionPageRoute = () => {
   const PARTS_PER_SCENARIO = 3;
+  const NUM_OF_SCENARIO = 3;
   const num_questions = questions.length;
   const { pathname } = useLocation();
   const { scenario, part } = useParams();
 
-  if (pathname === "/quiz/start") {
-    return "/quiz/1/1";
-  } else if (pathname === "/quiz/end") {
-    return null;
-  } else {
-    if (!scenario || !part) {
+  const getNext = () => {
+    if (pathname === "/quiz/start") {
+      return "/quiz/1/1";
+    } else if (pathname === "/quiz/end") {
       return null;
-    }
-    const next_idx =
-      (parseInt(scenario) - 1) * PARTS_PER_SCENARIO + parseInt(part);
-
-    if (next_idx === num_questions) {
-      // Current question is last one
-      return "/quiz/end";
     } else {
-      return `/quiz/${questions[next_idx].scenario}/${questions[next_idx].part}`;
+      if (!scenario || !part) {
+        return null;
+      }
+      const next_idx =
+        (parseInt(scenario) - 1) * PARTS_PER_SCENARIO + parseInt(part);
+
+      if (next_idx === num_questions) {
+        // Current question is last one
+        return "/quiz/end";
+      } else {
+        return `/quiz/${questions[next_idx].scenario}/${questions[next_idx].part}`;
+      }
     }
-  }
+  };
+
+  const getPrev = () => {
+    if (pathname === "/quiz/1/1") {
+      return "/quiz/start";
+    } else if (pathname === "/quiz/end") {
+      return `quiz/${NUM_OF_SCENARIO}/${PARTS_PER_SCENARIO}`;
+    } else {
+      if (!scenario || !part) {
+        return null;
+      }
+      const curr_idx =
+        (parseInt(scenario) - 1) * PARTS_PER_SCENARIO + parseInt(part) - 1;
+
+      if (curr_idx === 0) {
+        // Current question is first one
+        return "/quiz/start";
+      } else {
+        return `/quiz/${questions[curr_idx - 1].scenario}/${
+          questions[curr_idx - 1].part
+        }`;
+      }
+    }
+  };
+
+  return [getPrev(), getNext()];
 };
 
 export const handleButtonColor = (val, refVal, hasSubmitted, isCorrect) => {
@@ -78,4 +106,4 @@ export const handleButtonColor = (val, refVal, hasSubmitted, isCorrect) => {
   } else {
     return "choice";
   }
-}
+};

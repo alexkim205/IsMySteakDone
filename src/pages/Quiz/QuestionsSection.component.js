@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { getNextQuestionPageRoute } from "../../helper";
+import { getPrevAndNextQuestionPageRoute } from "../../helper";
 import { QuestionTypes, questions } from "./questions";
 import { Button } from "../../components/Button.component";
 import Section from "../../components/Section.component";
@@ -34,7 +35,7 @@ const QuestionSection = () => {
   const currQ = questions.find(
     (q) => q.scenario === parseInt(scenario) && q.part === parseInt(part)
   );
-  const nextRoute = getNextQuestionPageRoute();
+  const [prevRoute, nextRoute] = getPrevAndNextQuestionPageRoute();
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -44,7 +45,7 @@ const QuestionSection = () => {
   useEffect(() => {
     // Check localstorage to see if q has already been submitted, if so populate hasSubmitted and isCorrect
     const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
-    if (!cachedData) return
+    if (!cachedData) return;
     setHasSubmitted(cachedData.hasSubmitted);
     setIsCorrect(cachedData.isCorrect);
   }, [part, scenario]);
@@ -99,24 +100,37 @@ const QuestionSection = () => {
         Question {scenario}.{part}
       </h2>
       {renderQuestionType()}
-      <div className="buttons">
-        {hasSubmitted && (
-          <Button
-            onClick={() => {
-              setHasSubmitted(false);
-              setIsCorrect(false);
-              history.push(nextRoute);
-            }}
-          >
-            Next
-          </Button>
-        )}
-      </div>
       <div className="feedback">
         {hasSubmitted && (
           <Feedback right={isCorrect}>
             {isCorrect ? correctFeedback : incorrectFeedback}
           </Feedback>
+        )}
+      </div>
+      <div className="buttons">
+        {hasSubmitted && (
+          <Fragment>
+            {prevRoute !== "/quiz/start" && ( // if first question, don't show previous button
+              <Button
+                icon
+                onClick={() => {
+                  history.push(prevRoute);
+                }}
+              >
+                <IoIosArrowBack />
+              </Button>
+            )}
+            <Button
+              icon={nextRoute !== "/quiz/end"}
+              onClick={() => {
+                setHasSubmitted(false);
+                setIsCorrect(false);
+                history.push(nextRoute);
+              }}
+            >
+              {nextRoute === "/quiz/end" ? "Finish" : <IoIosArrowForward />}
+            </Button>
+          </Fragment>
         )}
       </div>
     </Container>

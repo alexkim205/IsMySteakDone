@@ -46,10 +46,8 @@ const QuizRoot = () => {
         </Route>
         <Route exact path={`${path}/end`}>
           <TitleSection>
-            <h1>Quiz</h1>
-            <p>No pressure, only your pride is at steak!</p>
+            <h1>Quiz Finished!</h1>
           </TitleSection>
-          <h2>Quiz Finished</h2>
         </Route>
         <Route path={`${path}/:scenario(\\d+)/:part(\\d+)`}>
           <QuizQuestions />

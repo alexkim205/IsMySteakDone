@@ -33,7 +33,7 @@ export const ButtonLink = styled(Link)`
 
 export const Button = styled.button`
   display: inline-block;
-  padding: 0.7em 1.4em;
+  padding: ${({ icon }) => (icon ? "0.7em" : "0.7em 1.4em")};
   margin: 0.2em 1em;
   border-radius: 0.15em;
   box-sizing: border-box;
