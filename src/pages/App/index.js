@@ -11,7 +11,7 @@ import Footer from "../Footer";
 const App = () => {
   return (
     <ReactBreakpoints breakpoints={breakpoints}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <RootBackground>
           <Navbar />
           <Body>
