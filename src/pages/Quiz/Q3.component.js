@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button } from "../../components/Button.component";
@@ -40,6 +41,7 @@ const Container = styled.div`
 
       img {
         height: 250px;
+        border: 4px solid gray;
       }
     }
     .choices {
@@ -60,8 +62,16 @@ const Container = styled.div`
 `;
 
 export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
+  const { scenario, part } = useParams();
   const [value, setValue] = useState(null);
   const { setup, prompt, img } = qInfo;
+
+  useEffect(() => {
+    // Check localstorage to see if q has already been submitted, if so populate value
+    const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
+    if (!cachedData) return
+    setValue(cachedData.selectedVal);
+  }, [scenario, part]);
 
   const handleClick = (e, val) => {
     e.preventDefault();

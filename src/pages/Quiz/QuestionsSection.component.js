@@ -41,9 +41,23 @@ const QuestionSection = () => {
 
   const { type, validate, correctFeedback, incorrectFeedback, qInfo } = currQ;
 
-  const handleSubmit = (val) => {
+  useEffect(() => {
+    // Check localstorage to see if q has already been submitted, if so populate hasSubmitted and isCorrect
+    const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
+    if (!cachedData) return
+    setHasSubmitted(cachedData.hasSubmitted);
+    setIsCorrect(cachedData.isCorrect);
+  }, [part, scenario]);
+
+  const handleSubmit = (selectedVal) => {
     setHasSubmitted(true);
-    setIsCorrect(validate(val)); // verify
+    const isCorrect = validate(selectedVal);
+    setIsCorrect(isCorrect); // verify
+
+    localStorage.setItem(
+      `s${scenario}p${part}`,
+      JSON.stringify({ hasSubmitted: true, isCorrect, selectedVal })
+    );
   };
 
   const renderQuestionType = () => {

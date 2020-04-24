@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button } from "../../components/Button.component";
@@ -6,6 +7,7 @@ import { Palm, Face } from "../../components/HoverMedia.component";
 import fistpng from "../../media/fist.png";
 import { TactileTypes, FistTypes } from "./questions";
 import { handleButtonColor } from "../../helper";
+import { mediaTemplate } from "@humblebee/styled-components-breakpoint";
 
 const Container = styled.div`
   width: 100%;
@@ -35,13 +37,17 @@ const Container = styled.div`
     .wrapper {
       box-sizing: border-box;
       margin: 0 auto 2em auto;
+      display: flex;
+      justify-content: center;
 
       img {
         height: 250px;
+        border: 4px solid gray;
       }
       /* height: 400px; */
     }
     .choices {
+      width: 100%;
       display: flex;
       justify-content: center;
       margin: 1em 0 2em 0;
@@ -59,30 +65,48 @@ const Container = styled.div`
 `;
 
 export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
+  const { scenario, part } = useParams();
   const { setup, prompt, media } = qInfo;
   const [fistValue, setFistValue] = useState(null);
+
+  useEffect(() => {
+    // For fist value only
+    // Check localstorage to see if q has already been submitted, if so populate value
+    if (media !== TactileTypes.FIST) {
+      return;
+    }
+    const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
+    if (!cachedData) return
+    setFistValue(cachedData.selectedVal);
+  }, [scenario, part, media]);
 
   const renderType = () => {
     if (media === TactileTypes.PALM) {
       return (
-        <Palm
-          hasSubmitted={hasSubmitted}
-          handleSubmit={handleSubmit}
-          isCorrect={isCorrect}
-        />
+        <div className="wrapper">
+          <Palm
+            hasSubmitted={hasSubmitted}
+            handleSubmit={handleSubmit}
+            isCorrect={isCorrect}
+          />
+        </div>
       );
     } else if (media === TactileTypes.FACE) {
       return (
-        <Face
-          hasSubmitted={hasSubmitted}
-          handleSubmit={handleSubmit}
-          isCorrect={isCorrect}
-        />
+        <div className="wrapper">
+          <Face
+            hasSubmitted={hasSubmitted}
+            handleSubmit={handleSubmit}
+            isCorrect={isCorrect}
+          />
+        </div>
       );
     } else if (media === TactileTypes.FIST) {
       return (
         <Fragment>
-          <img src={fistpng} alt="what-steak"></img>
+          <div className="wrapper">
+            <img src={fistpng} alt="fist"></img>
+          </div>
           <div className="choices">
             {Object.keys(FistTypes).map((fist, i) => (
               <Button
@@ -116,9 +140,7 @@ export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
     <Container>
       <div className="setup">{setup}</div>
       <div className="prompt">{prompt}</div>
-      <div className="input">
-        <div className="wrapper">{renderType()}</div>
-      </div>
+      <div className="input">{renderType()}</div>
     </Container>
   );
 };

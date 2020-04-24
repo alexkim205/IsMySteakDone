@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 
@@ -46,7 +47,7 @@ const HoverArea = styled.div`
 
   top: ${({ pos: { top } }) => top}px;
   left: ${({ pos: { left } }) => left}px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "auto" : "pointer")};
 
   transform: scale(${({ selected }) => (selected ? 1.2 : 1.0)});
 
@@ -117,7 +118,15 @@ const BaseHover = ({
   isCorrect,
   height,
 }) => {
+  const { scenario, part } = useParams();
   const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    // Check localstorage to see if q has already been submitted, if so populate value
+    const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
+    if (!cachedData) return;
+    setValue(cachedData.selectedVal);
+  }, [scenario, part]);
 
   return (
     <ImageWrapper src={basepng} height={height}>

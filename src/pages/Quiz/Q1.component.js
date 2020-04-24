@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Slider from "rc-slider";
@@ -115,6 +116,7 @@ const Container = styled.div`
 `;
 
 export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
+  const { scenario, part } = useParams();
   const { setup, prompt, suffix } = qInfo;
   const [value, setValue] = useState(0);
   const marks = [...Array(11).keys()].reduce(
@@ -122,6 +124,13 @@ export default ({ qInfo, hasSubmitted, handleSubmit, isCorrect }) => {
     {}
   );
   // marks[0] = `0 ${suffix}`;
+
+  useEffect(() => {
+    // Check localstorage to see if q has already been submitted, if so populate value
+    const cachedData = JSON.parse(localStorage.getItem(`s${scenario}p${part}`));
+    if (!cachedData) return
+    setValue(cachedData.selectedVal);
+  }, [scenario, part]);
 
   const handleChange = (v) => {
     setValue(v);
