@@ -5,7 +5,6 @@ import { IoIosArrowBack } from "react-icons/io";
 import TitleSection from "../../components/TitleSection.component";
 import Section from "../../components/Section.component";
 import TwoCol from "../../components/TwoColumn.layout";
-import Scrollbar from "../../components/Scrollbar.component";
 import QuizScrollbar from "./QuizScrollbar.component";
 import { ButtonLink, Button } from "../../components/Button.component";
 import QuestionSection from "./QuestionsSection.component";
@@ -26,7 +25,7 @@ const QuizStart = () => {
         <h2>Ready?</h2>
         <ButtonLink to={`/quiz/1/1`}>Start the quiz!</ButtonLink>
       </Section>
-      <Section center>
+      <Section center last>
         <h2>Need to review?</h2>
         <ButtonLink to="/cheat-sheet">Cheat Sheet</ButtonLink>
       </Section>
@@ -93,6 +92,10 @@ const QuizEnd = () => {
             Try again
           </Button>
         </div>
+      </Section>
+      <Section center last>
+        <h2>Need to review?</h2>
+        <ButtonLink to="/cheat-sheet">Cheat Sheet</ButtonLink>
       </Section>
     </Fragment>
   );

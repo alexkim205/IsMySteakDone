@@ -23,7 +23,7 @@ export const calculateAdditionalHeight = (ref) => {
   const topOfLastSection =
     ref.current.getBoundingClientRect().top + window.scrollY;
   const pageScrollNeeded = document.body.scrollHeight - topOfLastSection;
-  const offsetNeeded = window.innerHeight - pageScrollNeeded + 100;
+  const offsetNeeded = window.innerHeight - pageScrollNeeded - 50;
   if (offsetNeeded > 0) {
     return offsetNeeded;
   }

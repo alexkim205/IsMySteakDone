@@ -6,9 +6,9 @@ import Container from "./Container.layout";
 
 const Section = styled.div`
   width: 100%;
-  padding: 2em 2em 1em 2em;
+  padding: 2em 2em ${({ last }) => (last ? "4em" : "2em")} 2em;
   box-sizing: border-box;
-  background-color: lightgoldenrodyellow;
+  /* background-color: lightgoldenrodyellow; */
   display: flex;
   justify-content: center;
 
@@ -43,13 +43,13 @@ const Section = styled.div`
       margin-right: 1em;
       margin-bottom: 1em;
       ${breakpoint.down("m")`
-        width: 100%;
+        width: 100% !important;
       `}
     }
     .text {
       text-align: justify;
       ${breakpoint.down("m")`
-        width: 100%;
+        width: 100% !important;
       `}
     }
   }

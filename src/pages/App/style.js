@@ -11,6 +11,6 @@ export const Body = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   min-height: 500px;
 `;
