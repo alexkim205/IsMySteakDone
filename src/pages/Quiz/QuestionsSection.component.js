@@ -24,7 +24,7 @@ const Container = styled(Section)`
 `;
 
 const Feedback = styled.span`
-  color: ${({ right }) => (right ? "green" : "red")};
+  color: ${({ right }) => (right ? "#1bb46e" : "#ff311f")};
   font-weight: bold;
 `;
 

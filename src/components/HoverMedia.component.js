@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ReactTooltip from "react-tooltip";
 
 import facepng from "../media/face.png";
@@ -40,7 +40,7 @@ const ImageWrapper = styled.div`
 const HoverArea = styled.div`
   position: relative;
   border-radius: 100%;
-  background-color: ${({ selected }) => (selected ? "blue" : "lightblue")};
+  background-color: ${({ selected }) => (selected ? "#153B50" : "#79a2b8")};
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -55,11 +55,11 @@ const HoverArea = styled.div`
     if (disabled) {
       return null;
     }
-    return `
+    return css`
       &:hover {
-          transform: scale(1.2);
-          background-color: blue;
-        }
+        transform: scale(1.2);
+        background-color: #21648a;
+      }
     `;
   }}
 `;

@@ -134,4 +134,4 @@ export const redirectQuiz = () => {
   }
 };
 
-export const SCROLL_WIDTH = 7;
+export const SCROLL_WIDTH = 4;

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled, { css } from "styled-components";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { questions } from "./questions";
 import { SCROLL_WIDTH } from "../../helper";
@@ -16,28 +16,14 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background: lightsteelblue;
+    background: white;
+    /* border-bottom: 1px solid black; */
+    border-left: 1px solid black;
     top: 50px !important;
   }
 `;
 
 const HeaderBase = styled.div`
-
-  ${({ hasSubmitted, isCorrect }) => {
-    if (!hasSubmitted) {
-      return css`
-        border-left: ${SCROLL_WIDTH}px solid transparent;
-      `;
-    }
-    if (isCorrect) {
-      return css`
-        border-left: ${SCROLL_WIDTH}px solid green;
-      `;
-    }
-    return css`
-      border-left: ${SCROLL_WIDTH}px solid red;
-    `;
-  }};
   ${({ active }) => {
     if (active) {
       return css`
@@ -59,6 +45,27 @@ const ScenarioHeader = styled(HeaderBase)`
 const PartHeader = styled(HeaderBase)`
   font-size: 0.9em;
   padding: 0.25rem 0 0.25rem 2.1em;
+`;
+
+const QuestionLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+
+  ${({ hasSubmitted, isCorrect }) => {
+    if (!hasSubmitted) {
+      return css`
+          /* border-left: ${SCROLL_WIDTH}px solid transparent; */
+        `;
+    }
+    if (isCorrect) {
+      return css`
+        box-shadow: inset 0 -3px 0 -1px #24de89;
+      `;
+    }
+    return css`
+      box-shadow: inset 0 -3px 0 -1px #ff6961;
+    `;
+  }};
 `;
 
 const QuizScrollbar = () => {
@@ -96,7 +103,17 @@ const QuizScrollbar = () => {
                     hasSubmitted={hasSubmitted}
                     isCorrect={isCorrect}
                   >
-                    Question {part}
+                    {hasSubmitted ? (
+                      <QuestionLink
+                        to={hasSubmitted ? `/quiz/${scenario}/${part}` : null}
+                        hasSubmitted={hasSubmitted}
+                        isCorrect={isCorrect}
+                      >
+                        Question {part}
+                      </QuestionLink>
+                    ) : (
+                      <Fragment>Question {part}</Fragment>
+                    )}
                   </PartHeader>
                 </Fragment>
               );

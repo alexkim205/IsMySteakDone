@@ -15,7 +15,9 @@ export const StyledStickyContainer = styled(StickyContainer)`
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background: lightsteelblue;
+    background: white;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
     top: 50px !important;
 
     .info {
@@ -24,7 +26,7 @@ export const StyledStickyContainer = styled(StickyContainer)`
 
       .scroll {
         width: ${SCROLL_WIDTH}px;
-        background-color: lightcyan;
+        background-color: white;
       }
       .headers {
         display: flex;
@@ -33,7 +35,7 @@ export const StyledStickyContainer = styled(StickyContainer)`
 
         .item {
           /* height: 50px; */
-          padding: 1rem;
+          padding: 1rem 0.5rem;
           display: flex;
           align-items: center;
         }

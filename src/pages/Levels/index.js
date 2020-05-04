@@ -147,7 +147,7 @@ const Levels = () => (
       subtitle={"Which one do you prefer?"}
       sections={levels}
       bottomButtons={
-        <Section center>
+        <Section center last>
           <h2>Next, learn how to test doneness.</h2>
           <div className="flex-h">
             <ButtonLink to="/palm">The Palm Test</ButtonLink>

@@ -20,7 +20,7 @@ export const ButtonLink = styled(Link)`
       case "cancel":
         return "#668fff";
       default:
-        return "#3369ff";
+        return "#153B50";
     }
   }};
   cursor: ${({ disabled }) => (disabled ? "no-drop" : "pointer")};
@@ -54,15 +54,15 @@ export const Button = styled.button`
       case "cancel":
         return "#668fff";
       case "choice":
-        return "#668fff";
+        return "#79a2b8";
       case "disabled":
         return "gray";
       case "success":
-        return "green";
+        return "#24de89";
       case "failure":
-        return "red";
+        return "#FF6052";
       default:
-        return "#3369ff";
+        return "#153B50";
     }
   }};
   border: none;
@@ -79,6 +79,6 @@ export const Button = styled.button`
   }
   &:hover {
     background-color: ${({ disabled, success, failure }) =>
-      disabled || success || failure ? "none" : "#3369ff"};
+      disabled || success || failure ? "none" : "#21648a"};
   }
 `;

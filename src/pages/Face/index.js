@@ -73,7 +73,7 @@ const Face = () => (
     subtitle={"Time to face the consequences of your cooking."}
     sections={tests}
     bottomButtons={
-      <Section center>
+      <Section center last>
         <h2>Last, but not least.</h2>
         <div className="flex-h">
           <ButtonLink to="/fist">The Fist Test</ButtonLink>

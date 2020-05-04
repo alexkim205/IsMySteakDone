@@ -119,13 +119,12 @@ const CheatSheet = () => {
     <Fragment>
       <TitleSection>
         <h1>Cheat Sheet</h1>
-        <p></p>
+        <p>We get it, it's a lot of information.</p>
       </TitleSection>
       <Section center>
         <h2>
-          We get it, it's a lot of information. Perhaps this cheat sheet can
-          help. Print it out and stick it on your fridge. Put it on your apron.
-          Stitch it into your next unity blanket.
+          Perhaps this cheat sheet can help. Print it out and stick it on your
+          fridge. Sew it on your apron. Stitch it into your next unity blanket.
         </h2>
       </Section>
       <Section center>

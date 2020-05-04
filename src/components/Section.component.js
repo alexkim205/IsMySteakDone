@@ -10,6 +10,7 @@ const Section = styled.div`
   padding: 2em 2em ${({ last }) => (last ? "4em" : "2em")} 2em;
   box-sizing: border-box;
   /* background-color: lightgoldenrodyellow; */
+  border-bottom: ${({ last }) => (last ? "1px solid #20b2aa" : "none")};
   display: flex;
   justify-content: center;
 

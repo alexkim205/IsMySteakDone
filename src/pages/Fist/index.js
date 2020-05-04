@@ -65,7 +65,7 @@ const Fist = () => (
     subtitle={"No, you don't punch your steak."}
     sections={tests}
     bottomButtons={
-      <Section center>
+      <Section center last>
         <h2>Think you got what it takes?</h2>
         <div className="flex-h">
           <ButtonLink to="/cheat-sheet">Cheat Sheet</ButtonLink>

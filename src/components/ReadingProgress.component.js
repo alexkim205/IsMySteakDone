@@ -7,7 +7,7 @@ const Bar = styled.div.attrs(({ height }) => ({
   style: { height: `${height}%` },
 }))`
   transition: 0.1s height;
-  background-color: red;
+  background-color: #ff6961;
 `;
 
 const ReadingProgress = () => {

@@ -81,7 +81,7 @@ const Palm = () => (
     subtitle={"Testing doneness in the power of your palm."}
     sections={tests}
     bottomButtons={
-      <Section center>
+      <Section center last>
         <h2>One down, two to go.</h2>
         <div className="flex-h">
           <ButtonLink to="/face">The Face Test</ButtonLink>

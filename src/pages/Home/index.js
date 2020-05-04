@@ -11,15 +11,10 @@ const Home = () => {
         <h1>How to Cook Steak Right</h1>
         <p>
           Learn how to cook a cut of steak at different levels of doneness using
-          only your body.
+          only your body. Get started with learning about the four levels.
         </p>
+        <ButtonLink to="/levels">The 4 Levels of Doneness</ButtonLink>
       </TitleSection>
-      <Section center>
-        <h2>What?</h2>
-        <div className="flex-h">
-          <ButtonLink to="/levels">The 4 Levels of Doneness</ButtonLink>
-        </div>
-      </Section>
       <Section center last>
         <h2>How?</h2>
         <div className="flex-h">
