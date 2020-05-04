@@ -1,39 +1,77 @@
-import React from "react";
-import { lorem } from "../../helper";
+import React, { Fragment } from "react";
 
 import ScrollingPageTemplate from "../ScrollingPageTemplate";
 import Section from "../../components/Section.component";
-import {ButtonLink} from "../../components/Button.component";
+import { ButtonLink } from "../../components/Button.component";
+
+import palmrare from "../../media/palm-rare.png";
+import palmmediumrare from "../../media/palm-medium-rare.png";
+import palmmedium from "../../media/palm-medium.png";
+import palmwelldone from "../../media/palm-well-done.png";
+import steakrare from "../../media/steak-rare.png";
+import steakmediumrare from "../../media/steak-medium-rare.jpg";
+import steakmedium from "../../media/steak-medium.jpg";
+import steakwelldone from "../../media/steak-well-done.jpg";
 
 const tests = [
   {
     id: "what",
     name: "What?",
-    text: lorem.generateSentences(5),
+    text: (
+      <Fragment>
+        <p>
+          Now that you've learned about the different levels of doneness, you
+          may be wondering how to check the doneness. Let's say you don't have a
+          meat thermometer laying around (who really does?) and you don't want
+          to cut your steak to check the color because it will let all the
+          juices out. The palm test allows you to use your hand as a benchmark
+          for testing the "feel" of the steak:
+        </p>
+        <mark>
+          <ol>
+            <li>Relax your hand.</li>
+            <li>Relax.</li>
+            <li>
+              Gently press touch the tip of your thumb against the specified
+              finger. See the sections below for which finger to use.
+            </li>
+            <li>
+              Place your index finger on your other hand on the fleshy part
+              between the thumb and the base of your palm. This is what the
+              outside of the steak should feel like.
+            </li>
+            <li>
+              Oh, did I mention that you should make sure to relax your hand?
+            </li>
+          </ol>
+        </mark>
+        <p>Didn't follow? That's okay! The pictures below should be of help.</p>
+      </Fragment>
+    ),
   },
   {
     id: "rare",
     name: "Rare",
-    img: "https://dummyimage.com/400x300/757575/ffffff",
-    img2: "https://dummyimage.com/400x300/757575/ffffff",
+    img: palmrare,
+    img2: steakrare,
   },
   {
     id: "medium-rare",
     name: "Medium-Rare",
-    img: "https://dummyimage.com/400x300/757575/ffffff",
-    img2: "https://dummyimage.com/400x300/757575/ffffff",
+    img: palmmediumrare,
+    img2: steakmediumrare,
   },
   {
     id: "medium",
     name: "Medium",
-    img: "https://dummyimage.com/400x300/757575/ffffff",
-    img2: "https://dummyimage.com/400x300/757575/ffffff",
+    img: palmmedium,
+    img2: steakmedium,
   },
   {
     id: "well-done",
     name: "Well-Done",
-    img: "https://dummyimage.com/400x300/757575/ffffff",
-    img2: "https://dummyimage.com/400x300/757575/ffffff",
+    img: palmwelldone,
+    img2: steakwelldone,
   },
 ];
 

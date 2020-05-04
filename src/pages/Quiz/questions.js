@@ -103,11 +103,11 @@ export const questions = [
     scenario: 2,
     part: 1,
     type: QuestionTypes.NUMBER,
-    validate: (answer) => answer >= 1.5 && answer <= 3,
+    validate: (answer) => answer >= 0.5 && answer <= 3,
     correctFeedback:
-      "Correct! A rare steak should be seared for 1-2 minutes on each side on medium-high.",
+      "Correct! A rare steak should be seared for 1-2.5 minutes on each side on medium-high.",
     incorrectFeedback:
-      "Incorrect. A rare steak should be seared for 1-2 minutes on each side on medium-high.",
+      "Incorrect. A rare steak should be seared for 1-2.5 minutes on each side on medium-high.",
     qInfo: {
       setup:
         "You receive an order for a rare ribeye. You’re given a 1 inch thick 8oz ribeye.",
@@ -157,11 +157,11 @@ export const questions = [
     scenario: 3,
     part: 1,
     type: QuestionTypes.NUMBER,
-    validate: (answer) => answer >= 6 && answer <= 8.5,
+    validate: (answer) => answer >= 5.5 && answer <= 8.5,
     correctFeedback:
-      "Correct! A well-done steak should be seared for 6.5-8 minutes on each side on medium-high.",
+      "Correct! A well-done steak should be seared for 6-8 minutes on each side on medium-high.",
     incorrectFeedback:
-      "Incorrect. A well-done steak should be seared for 6.5-8 minutes on each side on medium-high.",
+      "Incorrect. A well-done steak should be seared for 6-8 minutes on each side on medium-high.",
     qInfo: {
       setup:
         "You receive an order for a well-done ribeye. You’re given a 1 inch thick 8oz ribeye.",

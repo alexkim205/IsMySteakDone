@@ -25,3 +25,15 @@ h5,
 h6 {
   font-family: "Abel", serif;
 }
+
+mark {
+  background-color: transparent;
+  /* background-image: linear-gradient(120deg, #FFD0AE 0%, #FFD0AE 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  background-position: 0 88%; */
+  font-weight: 500;
+  /* font-size: 1.1em; */
+  /* padding: 0 0.2em;
+  transition: background-size 0.25s ease-in; */
+}

@@ -16,7 +16,7 @@ const ImageWrapper = styled.div`
   margin: 0 auto;
   width: 300px;
   height: ${({ height }) => height}px;
-  border: 4px solid gray;
+  border: 3px solid #4a4e69;
   background-color: white;
   background-size: 300px 300px;
   background-repeat: no-repeat;

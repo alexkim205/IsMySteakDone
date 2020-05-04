@@ -1,8 +1,27 @@
+import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import styled from "styled-components";
 
-export default styled.img`
+const ImgContainer = styled(LazyLoadImage)`
+  object-fit: cover;
   width: 100%;
-  object-fit: cover !important; // or whatever
-  object-position: 0% 0% !important; // or whatever
-  font-family: "object-fit: cover !important; object-position: 0% 0% !important;"; // needed for IE9+ polyfill
+  height: 250px;
 `;
+const TableImgContainer = styled(ImgContainer)`
+  object-fit: contain;
+  width: 100%;
+  min-width: 50px;
+  height: auto;
+  border: 2px solid #4a4e69;
+`;
+
+const Image = React.forwardRef((props) => (
+  <ImgContainer {...props} effect="blur" />
+));
+
+export const TableImage = React.forwardRef((props) => (
+  <TableImgContainer {...props} effect="blur" />
+));
+
+export default Image;

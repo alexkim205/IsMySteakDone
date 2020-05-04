@@ -1,4 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
+import { BsChevronCompactRight } from "react-icons/bs";
+
 import { calculateAdditionalHeight } from "../helper";
 
 import TwoCol from "../components/TwoColumn.layout";
@@ -41,18 +43,22 @@ const ScrollingPageTemplate = ({
                     <div className="flex-h">
                       {img && img2 && !text && (
                         <Fragment>
-                          <div className="image" style={{ width: "50%" }}>
-                            <Image src={img} />
+                          <div className="image left">
+                            <Image src={img} alt={id}/>
                           </div>
-                          <div className="image" style={{ width: "50%" }}>
-                            <Image src={img} />
+                          <BsChevronCompactRight size="3em" color="#4a4e69" />
+                          <div className="image right">
+                            <Image src={img2}  alt={id}/>
                           </div>
                         </Fragment>
                       )}
                       {img && !img2 && text && (
                         <Fragment>
-                          <div className="image" style={{ width: "65%" }}>
-                            <Image src={img} />
+                          <div
+                            className="image"
+                            style={{ margin: "0 1em 1em 0", width: "65%" }}
+                          >
+                            <Image src={img} alt={id} />
                           </div>
                           <div className="text" style={{ width: "35%" }}>
                             {text}

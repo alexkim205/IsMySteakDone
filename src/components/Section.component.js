@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import { breakpoint } from "../helper";
 
 import Container from "./Container.layout";
@@ -39,15 +40,38 @@ const Section = styled.div`
       flex-direction: column;
     `}
 
+    svg {
+      align-self: center;
+
+      ${breakpoint.down("m")`
+        transform: rotate(90deg);
+      `}
+    }
+
     .image {
-      margin-right: 1em;
-      margin-bottom: 1em;
+      border: 3px solid #4a4e69;
+      height: 250px;
+      overflow: hidden;
+      box-sizing: border-box;
+
       ${breakpoint.down("m")`
         width: 100% !important;
       `}
+      &.left {
+        width: 40%;
+      }
+      &.right {
+        width: 30%;
+      }
     }
     .text {
-      text-align: justify;
+      /* text-align: justify; */
+      p:first-child {
+        margin-top: 0;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
       ${breakpoint.down("m")`
         width: 100% !important;
       `}

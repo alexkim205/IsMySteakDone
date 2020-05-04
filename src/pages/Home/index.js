@@ -16,7 +16,9 @@ const Home = () => {
       </TitleSection>
       <Section center>
         <h2>What?</h2>
-        <ButtonLink to="/levels">The 4 Levels of Doneness</ButtonLink>
+        <div className="flex-h">
+          <ButtonLink to="/levels">The 4 Levels of Doneness</ButtonLink>
+        </div>
       </Section>
       <Section center last>
         <h2>How?</h2>
